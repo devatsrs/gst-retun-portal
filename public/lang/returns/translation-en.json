@@ -709,5 +709,7 @@
 	"ERR_HSN_LENGTH": "Enter 2 digits/4 characters or more to search",
 	"ERR_MANDATORY_FIELD": "Please select one option to continue",
 	"ERR_INVALID_HSN": "HSN code can be numeric only.",
-	"ERR_INVALID_HSN_LENGTH": "HSN code can be maximum of 8 digits."
+	"ERR_INVALID_HSN_LENGTH": "HSN code can be maximum of 8 digits.",
+	"ERR_INVALID_USR": "Please enter Username",
+	"ERR_INVALID_PASS": "Please enter Password"
 }

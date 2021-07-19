@@ -5370,8 +5370,32 @@ myApp.controller("itcrvrslctrl", [
 
 myApp.controller("logincrtl", [
   "$scope",
-  function ($scope) {
+  "g1FileHandler",
+  "$log",
+  "$location",
+  "shareData",
+  function ($scope, g1FileHandler, $log, $location, shareData) {
     $scope.message = "Login Page";
+
+    $scope.loginSubmit = function () {
+      // $scope.validations.gstin($scope.gstinNum) &&
+      if ($scope.login.$valid) {
+        var reqParam = {
+          form: $scope.formNum,
+          gstin: $scope.gstinNum,
+          fy: $scope.yearSelected.year,
+          month: $scope.monthSelected.month,
+          fp: $scope.monthSelected.value,
+          gt: Number($scope.amounts.gt),
+          status: $scope.prevRtUpStatus,
+          cur_gt: Number($scope.amounts.cur_gt),
+          appendParameter: "N",
+        };
+
+        $log.debug("loginSubmit -> reqParam ", reqParam);
+      }
+      $log.debug("loginSubmit -> reqParam ");
+    };
   },
 ]);
 myApp.controller("registercrtl", [
