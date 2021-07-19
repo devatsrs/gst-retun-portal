@@ -40,6 +40,18 @@ myApp.config([
   "$routeProvider",
   function ($routeProvider) {
     $routeProvider
+      .when("/login", {
+        // templateUrl: 'pages/home.html',
+        // controller: 'gstrhomectrl'
+        templateUrl: "pages/returns/login.html",
+        controller: "logincrtl",
+      })
+      .when("/register", {
+        // templateUrl: 'pages/home.html',
+        // controller: 'gstrhomectrl'
+        templateUrl: "pages/returns/register.html",
+        controller: "registercrtl",
+      })
       .when("/home", {
         // templateUrl: 'pages/home.html',
         // controller: 'gstrhomectrl'

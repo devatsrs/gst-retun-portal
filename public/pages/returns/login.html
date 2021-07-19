@@ -1,0 +1,33 @@
+<br>
+<form name="dashboard" novalidate="" data-ng-submit="fileReturns()" ng-init="forlabel(formNum)">
+    <div class="tabpane">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Login</h4>
+                <hr>
+            </div>
+        </div>
+        <p class="mand-text req-field">indicates required fields</p>
+        <!-- <p class="mand-text">Indicates Mandatory Fields</p> -->
+        <div class="rettbl-format">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <label for="username" class="reg m-cir">Username</label>
+                    <input type="text" name="username" data-ng-model="username" class="form-control"
+                        ng-required="true" />
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <label for="password" class="reg m-cir">Password</label>
+                    <input type="password" name="password" data-ng-model="password" class="form-control"
+                        ng-required="true" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 text-left next-tab-nav">
+                    <button type="submit" class="btn btn-primary accpt">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
