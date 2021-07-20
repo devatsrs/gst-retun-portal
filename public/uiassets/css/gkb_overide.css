@@ -8,3 +8,11 @@ h1.site-title a {
   color: #8ba8ba;
   font-size: 14px;
 }
+span.logout {
+  display: inline;
+  padding-left: 23px;
+}
+span.logout a {
+  color: white;
+  background-color: ;
+}

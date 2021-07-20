@@ -18,10 +18,13 @@ var form = null;
 myApp.value("version", "3.0.4");
 myApp.value("servers", true);
 
-myApp.run(function ($rootScope) {
+myApp.run(function ($rootScope, Auth) {
   $rootScope.info = null;
 
   $rootScope.initInfo = function (iR, iG, iY, iM, iFlag) {
+    // console.log("rootScope.initInfo");
+    // sessionStorage.removeItem("user");
+
     if (iR === "GSTR1IFF") iR = "GSTR-1/IFF";
     $rootScope.info = {
       form: iR,
@@ -40,23 +43,21 @@ myApp.config([
   "$routeProvider",
   function ($routeProvider) {
     $routeProvider
+      .when("/home", {
+        templateUrl: "pages/returns/dashboard.html",
+        controller: "dashboardcrtl",
+      })
       .when("/login", {
-        // templateUrl: 'pages/home.html',
-        // controller: 'gstrhomectrl'
         templateUrl: "pages/returns/login.html",
         controller: "logincrtl",
       })
+      .when("/logout", {
+        controller: "logoutcrtl",
+        templateUrl: "pages/returns/login.html",
+      })
       .when("/register", {
-        // templateUrl: 'pages/home.html',
-        // controller: 'gstrhomectrl'
         templateUrl: "pages/returns/register.html",
         controller: "registercrtl",
-      })
-      .when("/home", {
-        // templateUrl: 'pages/home.html',
-        // controller: 'gstrhomectrl'
-        templateUrl: "pages/returns/dashboard.html",
-        controller: "dashboardcrtl",
       })
       .when("/gstr/dashboard", {
         templateUrl: "pages/returns/dashboard.html",
@@ -367,7 +368,7 @@ myApp.config([
         controller: "errorreturnsctrl",
       })
       .otherwise({
-        redirectTo: "/home",
+        redirectTo: "/login",
       });
   },
 ]);

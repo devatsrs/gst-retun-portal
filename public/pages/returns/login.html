@@ -14,15 +14,15 @@
                 <div class="col-sm-4 col-xs-12">
                     <label for="username" class="reg m-cir">Username</label>
                     <input type="text" name="username" data-ng-model="username" class="form-control" ng-required="true"
-                         value="user1@gkblabs.com" />
+                        value="user1@gkblabs.com" />
                     <span class="err" data-ng-show="login.$submitted && !username"
                         data-ng-bind="trans.ERR_INVALID_USR"></span>
 
                 </div>
                 <div class="col-sm-4 col-xs-12">
                     <label for="password" class="reg m-cir">Password</label>
-                    <input type="password" name="password" data-ng-model="password" class="form-control"
-                        ng-required="true" value="Welcome_100" />
+                    <input type="password" name="password" autocomplete="off" data-ng-model="password"
+                        class="form-control" ng-required="true" value="Welcome_100" />
                     <span class="err" data-ng-show="login.$submitted && !password"
                         data-ng-bind="trans.ERR_INVALID_PASS"></span>
                 </div>

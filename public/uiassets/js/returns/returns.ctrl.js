@@ -10,6 +10,7 @@ myApp.controller("mainctrl", [
   "R1Util",
   "validations",
   "shareData",
+  "Auth",
   function (
     $scope,
     $rootScope,
@@ -20,7 +21,8 @@ myApp.controller("mainctrl", [
     g1FileHandler,
     R1Util,
     validations,
-    shareData
+    shareData,
+    Auth
   ) {
     /* 
             @alert: Code common to all functions can only be written"
@@ -67,6 +69,17 @@ myApp.controller("mainctrl", [
     //initVersionCheck(); commenting version check
     initInvTypeList();
 
+    //custom
+    $rootScope.$on("$routeChangeSuccess", function (event) {
+      // console.log("routeChangeSuccess... ");
+      // console.log("location.path() ", $location.path());
+
+      if (!Auth.isLoggedIn()) {
+        console.log("DENY");
+        $scope.page("/login");
+      }
+    });
+    // custom
     //To get Most Recent Version
     function initVersionCheck() {
       if ($scope.checknewVersionFurther) {
@@ -5374,9 +5387,8 @@ myApp.controller("logincrtl", [
   "$log",
   "$q",
   "$http",
-  function ($scope, $log, Q, Http) {
-    $scope.message = "Login Page";
-
+  "Auth",
+  function ($scope, $log, Q, Http, Auth) {
     $scope.loginSubmit = function () {
       // $scope.validations.gstin($scope.gstinNum) &&
       if ($scope.login.$valid) {
@@ -5396,12 +5408,8 @@ myApp.controller("logincrtl", [
 
             if (login.length == 1) {
               $log.debug("loginSubmit -> login ", login);
-              // var reqParam = {
-              //   username: $scope.username,
-              //   password: $scope.password,
-              // };
-              // $log.debug("loginSubmit -> reqParam ", reqParam);
-              $scope.createAlert("Success", "Login Successfully");
+              Auth.setUser(login);
+              $scope.page("/home");
             } else {
               $log.debug("loginSubmit -> login:Invalid ");
             }
@@ -5423,6 +5431,13 @@ myApp.controller("logincrtl", [
         });
       return deferred.promise;
     }
+  },
+]);
+myApp.controller("logoutcrtl", [
+  "$scope",
+  function ($scope) {
+    Auth.logout();
+    $scope.page("/login");
   },
 ]);
 myApp.controller("registercrtl", [

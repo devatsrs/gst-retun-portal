@@ -32,6 +32,8 @@ html
             img.logo(src='uiassets/images/logo2.png' width="5%")
           h1.site-title
             a(href='#/home') GST Tool V1.0.0
+          span.logout 
+            a(href='#/logout') Logout
           ul.list-inline.mlinks(ng-if='info && info.fy && info.isUpload=="N"')
             li.gsHdInfo
               a.bl0(href='#/gstr/dashboard', data-ng-bind='info.form')
