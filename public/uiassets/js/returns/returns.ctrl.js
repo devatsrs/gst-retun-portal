@@ -70,6 +70,12 @@ myApp.controller("mainctrl", [
     initInvTypeList();
 
     //custom
+    // const user = sessionStorage.getItem("user");
+    // console.log("User -- ", user);
+    // if (user === null) {
+    //   $scope.page("/login");
+    // }
+
     $rootScope.$on("$routeChangeSuccess", function (event) {
       // console.log("routeChangeSuccess... ");
       // console.log("location.path() ", $location.path());
@@ -77,8 +83,24 @@ myApp.controller("mainctrl", [
       if (!Auth.isLoggedIn()) {
         console.log("DENY");
         $scope.page("/login");
+      } else {
+        console.log("ALLOW");
       }
     });
+
+    // $rootScope.routeChangeStart = function ($event, next, current) {
+    //   // ... you could trigger something here ...
+    //   console.log("routeChangeStart... ");
+
+    //   if (!Auth.isLoggedIn()) {
+    //     console.log("DENY");
+    //     event.preventDefault();
+    //     // $location.path("/login");
+    //   } else {
+    //     console.log("ALLOW");
+    //     //$location.path("/home");
+    //   }
+    // };
     // custom
     //To get Most Recent Version
     function initVersionCheck() {
@@ -5407,8 +5429,16 @@ myApp.controller("logincrtl", [
             });
 
             if (login.length == 1) {
+              sessionStorage.setItem("user", login);
+
               $log.debug("loginSubmit -> login ", login);
               Auth.setUser(login);
+              // var reqParam = {
+              //   username: $scope.username,
+              //   password: $scope.password,
+              // };
+              // $log.debug("loginSubmit -> reqParam ", reqParam);
+              // $scope.createAlert("Success", "Login Successfully");
               $scope.page("/home");
             } else {
               $log.debug("loginSubmit -> login:Invalid ");
@@ -5435,9 +5465,12 @@ myApp.controller("logincrtl", [
 ]);
 myApp.controller("logoutcrtl", [
   "$scope",
-  function ($scope) {
+  "Auth",
+  function ($scope, Auth) {
     Auth.logout();
     $scope.page("/login");
+    console.log("Logout done");
+    return false;
   },
 ]);
 myApp.controller("registercrtl", [
