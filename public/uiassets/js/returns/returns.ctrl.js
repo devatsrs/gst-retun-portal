@@ -33,6 +33,7 @@ myApp.controller("mainctrl", [
       $scope.trans = utilFunctions.initLanguage("returns");
     });
 
+    $log.debug("mainctrl ");
     //page navigation
     $scope.page = function (path) {
       $location.path(path);
@@ -5370,32 +5371,58 @@ myApp.controller("itcrvrslctrl", [
 
 myApp.controller("logincrtl", [
   "$scope",
-  "g1FileHandler",
   "$log",
-  "$location",
-  "shareData",
-  function ($scope, g1FileHandler, $log, $location, shareData) {
+  "$q",
+  "$http",
+  function ($scope, $log, Q, Http) {
     $scope.message = "Login Page";
 
     $scope.loginSubmit = function () {
       // $scope.validations.gstin($scope.gstinNum) &&
       if ($scope.login.$valid) {
-        var reqParam = {
-          form: $scope.formNum,
-          gstin: $scope.gstinNum,
-          fy: $scope.yearSelected.year,
-          month: $scope.monthSelected.month,
-          fp: $scope.monthSelected.value,
-          gt: Number($scope.amounts.gt),
-          status: $scope.prevRtUpStatus,
-          cur_gt: Number($scope.amounts.cur_gt),
-          appendParameter: "N",
-        };
+        getUserList().then((response) => {
+          console.log(response);
 
-        $log.debug("loginSubmit -> reqParam ", reqParam);
+          if (response.users !== undefined) {
+            var login = _.filter(response.users, function (user) {
+              if (
+                user.username == $scope.username &&
+                user.password == $scope.password
+              ) {
+                return true;
+              }
+              return false;
+            });
+
+            if (login.length == 1) {
+              $log.debug("loginSubmit -> login ", login);
+              // var reqParam = {
+              //   username: $scope.username,
+              //   password: $scope.password,
+              // };
+              // $log.debug("loginSubmit -> reqParam ", reqParam);
+              $scope.createAlert("Success", "Login Successfully");
+            } else {
+              $log.debug("loginSubmit -> login:Invalid ");
+            }
+          }
+        });
       }
       $log.debug("loginSubmit -> reqParam ");
     };
+
+    function getUserList() {
+      var deferred = Q.defer(),
+        fName = "/data/users.json";
+      Http.get(fName)
+        .success(function (response) {
+          deferred.resolve(response);
+        })
+        .error(function (error) {
+          deferred.reject(error);
+        });
+      return deferred.promise;
+    }
   },
 ]);
 myApp.controller("registercrtl", [

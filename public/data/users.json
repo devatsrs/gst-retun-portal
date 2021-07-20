@@ -1,0 +1,39 @@
+{
+    "users": [
+        {
+            "username": "user1@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Annabel Von"
+        },
+        {
+            "username": "user2@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Monte Mitchell"
+        },
+        {
+            "username": "user3@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Joyce Mraz PhD"
+        },
+        {
+            "username": "user4@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Viva Nienow V"
+        },
+        {
+            "username": "user5@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Deshawn McDermott"
+        },
+        {
+            "username": "user6@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Elissa Lakin"
+        },
+        {
+            "username": "user7@gkblabs.com",
+            "password": "Welcome_100",
+            "full_name": "Amiya Osinski"
+        }
+    ]
+}
