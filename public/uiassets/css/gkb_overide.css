@@ -1,18 +1,94 @@
+* {
+  font-family: "Nunito Sans";
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: 15px;
+}
+body {
+  background-color: #f1f2f7;
+  font-family: "Nunito Sans";
+}
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  font-size: 15px;
+}
+
 header {
-  background-color: #2d4834;
+  background-color: #0948b3;
+}
+header a {
+  color: none;
+}
+footer {
+  background: none;
 }
 footer .f2 {
-  background-color: #2d4834;
+  position: relative;
+  background: none;
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+}
+footer .f2 p {
+  display: block;
+  text-align: center;
+  float: none;
+  font-size: 15px;
+  color: #4a5073;
 }
 h1.site-title a {
-  color: #8ba8ba;
-  font-size: 14px;
+  color: #fff;
+  font-size: 15px;
+}
+img.logo {
+  /* box-shadow: -3px 0px 44px -7px rgb(0 0 0 / 58%);
+  -webkit-box-shadow: -3px 0px 44px -7px rgb(0 0 0 / 58%);
+  -moz-box-shadow: -3px 0px 44px -7px rgba(0, 0, 0, 0.58);
+  border: 1px solid #737885; */
 }
 span.logout {
   display: inline;
   padding-left: 23px;
+  top: 2px;
+  position: relative;
 }
 span.logout a {
   color: white;
-  background-color: ;
+}
+.form-control {
+  border-radius: 4px;
+}
+.btn {
+  border-radius: 4px;
+  border: none;
+}
+.btn:active {
+  border: none;
+}
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
+  color: #eaedf2;
+  background-color: #0948b3;
+  border: none !important;
+  outline: none !important;
+}
+.btn-primary:hover {
+  color: #eaedf2;
+  background-color: #3571d8 !important;
+}
+.btn-default {
+}
+.btn-default:hover {
+  background-color: #eef7f0;
+}
+
+.tabpane {
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.mand-text {
+  font-size: 15px;
+  text-transform: capitalize;
 }
