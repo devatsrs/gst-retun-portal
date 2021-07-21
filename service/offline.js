@@ -3755,7 +3755,7 @@ var generateFile = function (req, res) {
                         return callback(err);
                       }
 
-                      fs.exists(
+                      fs.access(
                         single_dir +
                           "returns" +
                           "_" +
@@ -4034,7 +4034,7 @@ var generateFile = function (req, res) {
                   return callback(err);
                 }
 
-                fs.exists(
+                fs.access(
                   single_dir +
                     "returns" +
                     "_" +
@@ -12169,7 +12169,7 @@ var generateErrorFile = function (req, res) {
                   return callback(err);
                 }
 
-                fs.exists(
+                fs.access(
                   single_dir +
                     "returns" +
                     "_" +
