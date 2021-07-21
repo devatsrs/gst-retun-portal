@@ -80,6 +80,13 @@ myApp.controller("mainctrl", [
       // console.log("routeChangeSuccess... ");
       console.log("location.path() ", $location.path());
 
+      if ($location.path() == "/login") {
+        $(".logout").addClass("hidden");
+        //document.getElementById("logout").style.display = "none";
+      } else {
+        $(".logout").removeClass("hidden");
+        //document.getElementById("logout").style.display = "";
+      }
       if (!Auth.isLoggedIn()) {
         console.log("DENY");
         $scope.page("/login");
