@@ -78,11 +78,13 @@ myApp.controller("mainctrl", [
 
     $rootScope.$on("$routeChangeSuccess", function (event) {
       // console.log("routeChangeSuccess... ");
-      // console.log("location.path() ", $location.path());
+      console.log("location.path() ", $location.path());
 
       if (!Auth.isLoggedIn()) {
         console.log("DENY");
         $scope.page("/login");
+      } else if (Auth.isLoggedIn() && $location.path() == "/login") {
+        $scope.page("/home");
       } else {
         console.log("ALLOW");
       }
