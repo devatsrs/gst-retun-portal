@@ -7,7 +7,7 @@
  *  Last Updated:  Prakash Kaphle, Dec 01 2020
  **/
 
-//"use strict";
+"use strict";
 var express = require("express");
 var extend = require("node.extend");
 var router = express.Router();
@@ -3755,7 +3755,7 @@ var generateFile = function (req, res) {
                         return callback(err);
                       }
 
-                      fs.access(
+                      fs.exists(
                         single_dir +
                           "returns" +
                           "_" +
@@ -4015,7 +4015,9 @@ var generateFile = function (req, res) {
               }
             });
 
-            fs.writeFile(
+            console.log("gstfile");
+            console.log(JSON.stringify(gstfile));
+            console.log(
               single_dir +
                 "returns" +
                 "_" +
@@ -4026,12 +4028,25 @@ var generateFile = function (req, res) {
                 gstin +
                 "_" +
                 "offline" +
+                ".json"
+            );
+            fs.writeFile(
+              single_dir +
+                fp_date +
+                "_" +
+                form.substring(3) +
+                "_" +
+                gstin +
+                "_" +
+                "offline" +
                 ".json",
               JSON.stringify(gstfile),
               function (err) {
+                console.log("err--", err);
                 if (err) {
                   // something went wrong, file probably not written.
-                  return callback(err);
+
+                  return calback(err);
                 }
 
                 fs.access(
@@ -12169,7 +12184,7 @@ var generateErrorFile = function (req, res) {
                   return callback(err);
                 }
 
-                fs.access(
+                fs.exists(
                   single_dir +
                     "returns" +
                     "_" +
